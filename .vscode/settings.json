@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.inc": "cpp"
+    },
+    "LUBIS.ols.checker": false,
+    "LUBIS.projectSettings.formalTool": "custom",
+    "LUBIS.sva.options": [
+        "past"
+    ]
+}

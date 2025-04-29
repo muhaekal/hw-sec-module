@@ -1,0 +1,923 @@
+{
+    "version": 20,
+    "module": {
+        "name": "tcp_server",
+        "reset_signal": {
+            "signal": "tcp_vlg_engine.rst",
+            "is_active_low": false
+        },
+        "clock_signal": {
+            "signal": "tcp_vlg_engine.clk",
+            "is_falling_edge": false
+        },
+        "next_shift_amount": 0,
+        "rtl_module_name": "",
+        "instance_name": "",
+        "wrapper_instance_name": "",
+        "default_assertion_duration": 1,
+        "default_disable_iff": "",
+        "reset": {
+            "documentation_comment": ""
+        },
+        "additional_includes": "",
+        "additional_imports": "",
+        "sync_macros": [
+            {
+                "name": "ACK_port_2_vld",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack && (tcp_vlg_engine.rx.meta.tcp_hdr.tcp_seq_num == tcp_vlg_engine.tcb.rem_seq + 1) && (tcp_vlg_engine.rx.meta.tcp_hdr.src_port == tcp_vlg_engine.tcb.rem_port) && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.tcb.loc_port)",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ACK_port_3_vld",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.tx_ctl.flushed",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ACK_port_vld",
+                "datatype": "bool",
+                "refinement": "(tcp_vlg_engine.fsm == dcn_ack_sent_s) && tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack && (tcp_vlg_engine.rx.meta.tcp_hdr.src_port == tcp_vlg_engine.tcb.rem_port) && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.tcb.loc_port)",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_port_2_vld",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.ctl.listen",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_port_vld",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.syn && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.ctl.loc_port)",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "FIN_port_vld",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            }
+        ],
+        "notify_macros": [
+            {
+                "name": "ACK_port_2_rdy",
+                "datatype": "bool",
+                "refinement": "1'b1",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "ACK_port_3_rdy",
+                "datatype": "bool",
+                "refinement": "1'b1",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "ACK_port_rdy",
+                "datatype": "bool",
+                "refinement": "1'b1",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "SYN_port_2_rdy",
+                "datatype": "bool",
+                "refinement": "1'b1",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "SYN_port_rdy",
+                "datatype": "bool",
+                "refinement": "1'b1",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "FIN_port_rdy",
+                "datatype": "bool",
+                "refinement": "1'b1",
+                "create_commitments": false,
+                "unused": true
+            }
+        ],
+        "input_datapath_macros": [
+            {
+                "name": "ACK_in",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ack_number_in",
+                "datatype": "unsigned_32",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_ack_num",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ACK_port",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ACK_port_2",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ACK_port_3",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ctl_loc_port_in",
+                "datatype": "unsigned_16",
+                "refinement": "tcp_vlg_engine.ctl.loc_port",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "dst_port_in",
+                "datatype": "unsigned_16",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.dst_port",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "FIN_in",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.fin",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "force_dcn_in",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.tx_ctl.force_dcn",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "last_ack_in",
+                "datatype": "unsigned_32",
+                "refinement": "tcp_vlg_engine.last_ack",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "listen_in",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.ctl.listen",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "pkt_stop_in",
+                "datatype": "unsigned_32",
+                "refinement": "tcp_vlg_engine.rx.meta.pkt_stop",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "PSH_in",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.psh",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "RST_in",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.rst",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "seq_number_in",
+                "datatype": "unsigned_32",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_seq_num",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "src_port_in",
+                "datatype": "unsigned_16",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.src_port",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_in",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.syn",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_port",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.syn",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_port_2",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.syn",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "tx_ctl_loc_seq_in",
+                "datatype": "unsigned_32",
+                "refinement": "tcp_vlg_engine.tx_ctl.loc_seq",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "tx_done_in",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.tx.done",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "tx_eng_acc_in",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.tx_eng.acc",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "FIN_port",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            }
+        ],
+        "output_datapath_macros": [
+            {
+                "name": "ack_number_out",
+                "datatype": "unsigned_32",
+                "refinement": "tcp_vlg_engine.tx_eng.meta.tcp_hdr.tcp_ack_num",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ACK_out",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.tx_eng.meta.tcp_hdr.tcp_flags.ack",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "dst_port_out",
+                "datatype": "unsigned_16",
+                "refinement": "tcp_vlg_engine.tx_eng.meta.tcp_hdr.dst_port",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "FIN_out",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.tx_eng.meta.tcp_hdr.tcp_flags.fin",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "RST_out",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.tx_eng.meta.tcp_hdr.tcp_flags.rst",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "seq_number_out",
+                "datatype": "unsigned_32",
+                "refinement": "tcp_vlg_engine.tx_eng.meta.tcp_hdr.tcp_seq_num",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "src_port_out",
+                "datatype": "unsigned_16",
+                "refinement": "tcp_vlg_engine.tx_eng.meta.tcp_hdr.src_port",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_out",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.tx_eng.meta.tcp_hdr.tcp_flags.syn",
+                "create_commitments": true,
+                "unused": false
+            }
+        ],
+        "state_macros": [
+            {
+                "name": "ABSTRACT_S",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.fsm == dcn_ack_sent_s || tcp_vlg_engine.fsm == dcn_send_ack_s ||  tcp_vlg_engine.fsm == dcn_fin_sent_s || tcp_vlg_engine.fsm == dcn_send_fin_s",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "CLOSED_S",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.fsm == closed_s",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_1_S",
+                "datatype": "bool",
+                "refinement": "(tcp_vlg_engine.fsm == established_s) && (tcp_vlg_engine.close != close_none)",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S",
+                "datatype": "bool",
+                "refinement": "(tcp_vlg_engine.fsm == established_s) && (tcp_vlg_engine.close == close_none)",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "FLUSH_S",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.fsm == flush_s",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "LISTEN_S",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.fsm == listen_s",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "RST_RCVD_S",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.fsm == dcn_send_rst_s",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_1_S",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.fsm == con_syn_ack_sent_s",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_S",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.fsm == con_send_syn_ack_s",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ABSTRACT_S_1",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            }
+        ],
+        "register_macros": [
+            {
+                "name": "abstract_port_vld",
+                "datatype": "bool",
+                "refinement": "(tcp_vlg_engine.fsm == dcn_ack_sent_s) && tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack && (tcp_vlg_engine.rx.meta.tcp_hdr.src_port == tcp_vlg_engine.tcb.rem_port) && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.tcb.loc_port)",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "close_reset",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.close == close_reset",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "dcn_send_ack",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.fsm == dcn_send_ack_s",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "local_ack",
+                "datatype": "unsigned_32",
+                "refinement": "tcp_vlg_engine.tcb.loc_ack",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "local_port",
+                "datatype": "unsigned_16",
+                "refinement": "tcp_vlg_engine.tcb.loc_port",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "local_seq",
+                "datatype": "unsigned_32",
+                "refinement": "tcp_vlg_engine.tcb.loc_seq",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "remote_port",
+                "datatype": "unsigned_16",
+                "refinement": "tcp_vlg_engine.tcb.rem_port",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "close",
+                "datatype": "bool",
+                "refinement": "((tcp_vlg_engine.con_type == tcp_server) && !tcp_vlg_engine.ctl.listen) || tcp_vlg_engine.tx_ctl.force_dcn",
+                "create_commitments": false,
+                "unused": true
+            },
+            {
+                "name": "close_active",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.close == close_active",
+                "create_commitments": false,
+                "unused": true
+            },
+            {
+                "name": "close_passive",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.close == close_passive",
+                "create_commitments": false,
+                "unused": true
+            },
+            {
+                "name": "fin_rec",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.fin && (tcp_vlg_engine.rx.meta.tcp_hdr.src_port == tcp_vlg_engine.tcb.rem_port) && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.tcb.loc_port)",
+                "create_commitments": false,
+                "unused": true
+            },
+            {
+                "name": "listen",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.ctl.listen",
+                "create_commitments": false,
+                "unused": true
+            },
+            {
+                "name": "nxt_st",
+                "datatype": "e_states",
+                "refinement": "",
+                "create_commitments": false,
+                "unused": true
+            },
+            {
+                "name": "remote_seq",
+                "datatype": "unsigned_32",
+                "refinement": "tcp_vlg_engine.tcb.rem_seq",
+                "create_commitments": false,
+                "unused": true
+            },
+            {
+                "name": "rst_rec",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.rst && (tcp_vlg_engine.rx.meta.tcp_hdr.src_port == tcp_vlg_engine.tcb.rem_port) && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.tcb.loc_port)",
+                "create_commitments": false,
+                "unused": true
+            }
+        ],
+        "assertions": [
+            {
+                "name": "ABSTRACT_S_to_ABSTRACT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ABSTRACT_S_to_ABSTRACT_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ABSTRACT_S_to_CLOSED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "CLOSED_S_to_CLOSED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "CLOSED_S_to_LISTEN_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_1_S_to_FLUSH_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_1_S_to_FLUSH_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_1_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_1_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_1_S_2",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_1_S_3",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_1_S_4",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_1_S_5",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "FLUSH_S_to_ABSTRACT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "FLUSH_S_to_RST_RCVD_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LISTEN_S_to_SYN_RCVD_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "RST_RCVD_S_to_CLOSED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_1_S_to_ESTABLISHED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_S_to_SYN_RCVD_1_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ABSTRACT_S_to_CLOSED_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_1_S_to_ABSTRACT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_1_S_to_ABSTRACT_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_1_S_to_FLUSH_S_2",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_1_S_to_FLUSH_S_3",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_1_S_to_RST_RCVD_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_1_S_to_RST_RCVD_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ABSTRACT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ABSTRACT_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_CLOSED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_CLOSED_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_1_S_6",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_1_S_7",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_S_2",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_S_3",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_S_4",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_S_5",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_S_6",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_S_7",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_RST_RCVD_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_RST_RCVD_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "FLUSH_S_to_FLUSH_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "LISTEN_S_to_LISTEN_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "RST_RCVD_S_to_RST_RCVD_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "SYN_RCVD_1_S_to_SYN_RCVD_1_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ABSTRACT_S_to_ABSTRACT_S_2",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            }
+        ],
+        "waits": [
+            {
+                "name": "FLUSH_S_wait",
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LISTEN_S_wait",
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_1_S_wait",
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ABSTRACT_S_wait",
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "CLOSED_S_wait",
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_wait",
+                "documentation_comment": "",
+                "unused": true
+            }
+        ]
+    }
+}

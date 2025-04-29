@@ -1,0 +1,351 @@
+{
+    "version": 20,
+    "module": {
+        "name": "tcp_server",
+        "reset_signal": {
+            "signal": "",
+            "is_active_low": false
+        },
+        "clock_signal": {
+            "signal": "",
+            "is_falling_edge": false
+        },
+        "next_shift_amount": 0,
+        "rtl_module_name": "",
+        "instance_name": "",
+        "wrapper_instance_name": "",
+        "default_assertion_duration": 1,
+        "default_disable_iff": "",
+        "additional_includes": "",
+        "additional_imports": "",
+        "reset": {
+            "documentation_comment": ""
+        },
+        "sync_macros": [],
+        "notify_macros": [],
+        "input_datapath_macros": [
+            {
+                "name": "ACK_in",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "FIN_in",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "PSH_in",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_in",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ack_number_in",
+                "datatype": "unsigned_32",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ctl_loc_port_in",
+                "datatype": "unsigned_16",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "dst_port_in",
+                "datatype": "unsigned_16",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "pkt_stop_in",
+                "datatype": "unsigned_32",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "seq_number_in",
+                "datatype": "unsigned_32",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "src_port_in",
+                "datatype": "unsigned_16",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "tx_ctl_loc_seq_in",
+                "datatype": "unsigned_32",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            }
+        ],
+        "output_datapath_macros": [
+            {
+                "name": "ACK_out",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "FIN_out",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_out",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ack_number_out",
+                "datatype": "unsigned_32",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "dst_port_out",
+                "datatype": "unsigned_16",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "seq_number_out",
+                "datatype": "unsigned_32",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "src_port_out",
+                "datatype": "unsigned_16",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            }
+        ],
+        "state_macros": [
+            {
+                "name": "CLOSED_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "LISTEN_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_1_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ABSTRACT_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            }
+        ],
+        "register_macros": [
+            {
+                "name": "close",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "listen",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "local_ack",
+                "datatype": "unsigned_32",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "local_port",
+                "datatype": "unsigned_16",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "local_seq",
+                "datatype": "unsigned_32",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "remote_port",
+                "datatype": "unsigned_16",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "remote_seq",
+                "datatype": "unsigned_32",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            }
+        ],
+        "assertions": [
+            {
+                "name": "ABSTRACT_S_to_ABSTRACT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ABSTRACT_S_to_CLOSED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "CLOSED_S_to_CLOSED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "CLOSED_S_to_LISTEN_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ABSTRACT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ABSTRACT_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LISTEN_S_to_LISTEN_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LISTEN_S_to_SYN_RCVD_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_1_S_to_ESTABLISHED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_1_S_to_SYN_RCVD_1_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_S_to_SYN_RCVD_1_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            }
+        ],
+        "waits": []
+    }
+}

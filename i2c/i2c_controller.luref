@@ -1,0 +1,654 @@
+{
+    "version": 20,
+    "module": {
+        "name": "i2c_controller",
+        "reset_signal": {
+            "signal": "!master_I2C.rst",
+            "is_active_low": false
+        },
+        "clock_signal": {
+            "signal": "master_I2C.clk",
+            "is_falling_edge": false
+        },
+        "next_shift_amount": 0,
+        "rtl_module_name": "master_I2C",
+        "instance_name": "",
+        "wrapper_instance_name": "",
+        "default_assertion_duration": 1,
+        "default_disable_iff": "",
+        "reset": {
+            "documentation_comment": ""
+        },
+        "additional_includes": "",
+        "additional_imports": "",
+        "sync_macros": [],
+        "notify_macros": [],
+        "input_datapath_macros": [
+            {
+                "name": "addr",
+                "datatype": "unsigned_8",
+                "refinement": "master_I2C.addr_target",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "data_rcv_in",
+                "datatype": "unsigned_24",
+                "refinement": "master_I2C.data_received",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "data_snt",
+                "datatype": "unsigned_24",
+                "refinement": "master_I2C.data_send",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "sda_in",
+                "datatype": "unsigned_1",
+                "refinement": "master_I2C.SDA_rx",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "start",
+                "datatype": "unsigned_1",
+                "refinement": "master_I2C.initial_comm",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "count_thd",
+                "datatype": "unsigned_8",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            },
+            {
+                "name": "count_thd_in",
+                "datatype": "unsigned_8",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            },
+            {
+                "name": "num_bytes",
+                "datatype": "unsigned_8",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            }
+        ],
+        "output_datapath_macros": [
+            {
+                "name": "data_rcv",
+                "datatype": "unsigned_24",
+                "refinement": "master_I2C.data_received",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "scl",
+                "datatype": "unsigned_1",
+                "refinement": "master_I2C.SCL_tx",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "sda_out",
+                "datatype": "unsigned_1",
+                "refinement": "master_I2C.SDA_tx",
+                "create_commitments": true,
+                "unused": false
+            }
+        ],
+        "state_macros": [
+            {
+                "name": "HIGH_ADDR_ACK_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == BIT_CYCLE_HIGH_ADDR_ACK",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "HIGH_CLK_ADDR_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == BIT_CYCLE_HIGH_ADDR",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "HIGH_CLK_DATA_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == BIT_CYCLE_HIGH_DATA",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "HIGH_DATA_ACK_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == BIT_CYCLE_HIGH_DATA_ACK",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "HIGH_STOP_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == TERMINATE_HIGH",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "IDLE_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == IDLE",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "LOW_ADDR_ACK_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == BIT_CYCLE_LOW_ADDR_ACK",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "LOW_CLK_ADDR_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == BIT_CYCLE_LOW_ADDR",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "LOW_CLK_DATA_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == BIT_CYCLE_LOW_DATA",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "LOW_DATA_ACK_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == BIT_CYCLE_LOW_DATA_ACK",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "LOW_STOP_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == TERMINATE_LOW",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "START_S",
+                "datatype": "bool",
+                "refinement": "master_I2C.state == INITIATE",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ADDR_ACK_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            },
+            {
+                "name": "ADDR_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            }
+        ],
+        "register_macros": [
+            {
+                "name": "ack",
+                "datatype": "unsigned_1",
+                "refinement": "master_I2C.ack",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "addr_shift_reg",
+                "datatype": "unsigned_8",
+                "refinement": "master_I2C.addr_target_sampled",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "bit_count_addr",
+                "datatype": "unsigned_4",
+                "refinement": "master_I2C.count_addr",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "bit_count_data",
+                "datatype": "unsigned_4",
+                "refinement": "master_I2C.count_data",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "count_thd",
+                "datatype": "unsigned_10",
+                "refinement": "master_I2C.count_initiate",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "count_thigh",
+                "datatype": "unsigned_10",
+                "refinement": "master_I2C.count_high",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "count_tlow",
+                "datatype": "unsigned_10",
+                "refinement": "master_I2C.count_low",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "data_shift_reg",
+                "datatype": "unsigned_24",
+                "refinement": "master_I2C.data_send_sampled",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "rcvd_byte",
+                "datatype": "unsigned_2",
+                "refinement": "master_I2C.count_bytes_received",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "rw",
+                "datatype": "unsigned_1",
+                "refinement": "master_I2C.rw",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "sent_byte",
+                "datatype": "unsigned_2",
+                "refinement": "master_I2C.count_bytes_send",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "bit_count",
+                "datatype": "unsigned_4",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            },
+            {
+                "name": "rcvd_byte_remaining",
+                "datatype": "unsigned_8",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            },
+            {
+                "name": "sda",
+                "datatype": "unsigned_1",
+                "refinement": "master_I2C.ack",
+                "create_commitments": false,
+                "unused": true
+            },
+            {
+                "name": "sent_byte_remaining",
+                "datatype": "unsigned_8",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            }
+        ],
+        "assertions": [
+            {
+                "name": "HIGH_ADDR_ACK_S_to_HIGH_ADDR_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_ADDR_ACK_S_to_HIGH_ADDR_ACK_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_ADDR_ACK_S_to_LOW_CLK_DATA_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_CLK_ADDR_S_to_HIGH_CLK_ADDR_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_CLK_ADDR_S_to_LOW_ADDR_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_CLK_ADDR_S_to_LOW_CLK_ADDR_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_CLK_DATA_S_to_HIGH_CLK_DATA_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_CLK_DATA_S_to_HIGH_CLK_DATA_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_CLK_DATA_S_to_LOW_CLK_DATA_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_CLK_DATA_S_to_LOW_DATA_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_DATA_ACK_S_to_HIGH_DATA_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_DATA_ACK_S_to_HIGH_DATA_ACK_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_DATA_ACK_S_to_LOW_CLK_DATA_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_DATA_ACK_S_to_LOW_STOP_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_STOP_S_to_HIGH_STOP_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "HIGH_STOP_S_to_IDLE_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "IDLE_S_to_IDLE_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "IDLE_S_to_START_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_ADDR_ACK_S_to_HIGH_ADDR_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_ADDR_ACK_S_to_LOW_ADDR_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_CLK_ADDR_S_to_HIGH_CLK_ADDR_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_CLK_ADDR_S_to_LOW_CLK_ADDR_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_CLK_ADDR_S_to_LOW_CLK_ADDR_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_CLK_DATA_S_to_HIGH_CLK_DATA_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_CLK_DATA_S_to_LOW_CLK_DATA_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_CLK_DATA_S_to_LOW_CLK_DATA_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_CLK_DATA_S_to_LOW_CLK_DATA_S_2",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_CLK_DATA_S_to_LOW_STOP_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_DATA_ACK_S_to_HIGH_DATA_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_DATA_ACK_S_to_LOW_DATA_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_DATA_ACK_S_to_LOW_DATA_ACK_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_DATA_ACK_S_to_LOW_DATA_ACK_S_2",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_DATA_ACK_S_to_LOW_DATA_ACK_S_3",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_STOP_S_to_HIGH_STOP_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_STOP_S_to_LOW_STOP_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LOW_STOP_S_to_LOW_STOP_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "START_S_to_LOW_CLK_ADDR_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "START_S_to_START_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ADDR_ACK_S_to_IDLE_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ADDR_S_to_ADDR_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ADDR_S_to_ADDR_ACK_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "START_S_to_ADDR_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            }
+        ],
+        "waits": []
+    }
+}

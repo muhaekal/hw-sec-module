@@ -1,0 +1,210 @@
+Determining if the __sparc exist failed with the following output:
+Change Dir: /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_3f15e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_3f15e.dir/build.make CMakeFiles/cmTC_3f15e.dir/build
+gmake[1]: Entering directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3f15e.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_3f15e.dir/CheckSymbolExists.c.o -c /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__sparc’ undeclared (first use in this function)
+    7 |   return ((int*)(&__sparc))[argc];
+      |                   ^~~~~~~
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_3f15e.dir/build.make:78: CMakeFiles/cmTC_3f15e.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_3f15e/fast] Error 2
+
+
+File /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __sparc
+  return ((int*)(&__sparc))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __sparc__ exist failed with the following output:
+Change Dir: /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_8cdd0/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_8cdd0.dir/build.make CMakeFiles/cmTC_8cdd0.dir/build
+gmake[1]: Entering directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8cdd0.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_8cdd0.dir/CheckSymbolExists.c.o -c /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__sparc__’ undeclared (first use in this function)
+    7 |   return ((int*)(&__sparc__))[argc];
+      |                   ^~~~~~~~~
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_8cdd0.dir/build.make:78: CMakeFiles/cmTC_8cdd0.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_8cdd0/fast] Error 2
+
+
+File /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __sparc__
+  return ((int*)(&__sparc__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __hppa exist failed with the following output:
+Change Dir: /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e290e/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e290e.dir/build.make CMakeFiles/cmTC_e290e.dir/build
+gmake[1]: Entering directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e290e.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_e290e.dir/CheckSymbolExists.c.o -c /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__hppa’ undeclared (first use in this function)
+    7 |   return ((int*)(&__hppa))[argc];
+      |                   ^~~~~~
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_e290e.dir/build.make:78: CMakeFiles/cmTC_e290e.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_e290e/fast] Error 2
+
+
+File /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __hppa
+  return ((int*)(&__hppa))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __i386 exist failed with the following output:
+Change Dir: /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e6fe9/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e6fe9.dir/build.make CMakeFiles/cmTC_e6fe9.dir/build
+gmake[1]: Entering directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e6fe9.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_e6fe9.dir/CheckSymbolExists.c.o -c /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__i386’ undeclared (first use in this function)
+    7 |   return ((int*)(&__i386))[argc];
+      |                   ^~~~~~
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_e6fe9.dir/build.make:78: CMakeFiles/cmTC_e6fe9.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_e6fe9/fast] Error 2
+
+
+File /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __i386
+  return ((int*)(&__i386))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __aarch64__ exist failed with the following output:
+Change Dir: /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_e9044/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_e9044.dir/build.make CMakeFiles/cmTC_e9044.dir/build
+gmake[1]: Entering directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e9044.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_e9044.dir/CheckSymbolExists.c.o -c /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__aarch64__’ undeclared (first use in this function)
+    7 |   return ((int*)(&__aarch64__))[argc];
+      |                   ^~~~~~~~~~~
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_e9044.dir/build.make:78: CMakeFiles/cmTC_e9044.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_e9044/fast] Error 2
+
+
+File /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __aarch64__
+  return ((int*)(&__aarch64__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __ppc__ exist failed with the following output:
+Change Dir: /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_6cd10/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_6cd10.dir/build.make CMakeFiles/cmTC_6cd10.dir/build
+gmake[1]: Entering directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6cd10.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_6cd10.dir/CheckSymbolExists.c.o -c /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__ppc__’ undeclared (first use in this function)
+    7 |   return ((int*)(&__ppc__))[argc];
+      |                   ^~~~~~~
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_6cd10.dir/build.make:78: CMakeFiles/cmTC_6cd10.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_6cd10/fast] Error 2
+
+
+File /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __ppc__
+  return ((int*)(&__ppc__))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the __powerpc exist failed with the following output:
+Change Dir: /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_5360c/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_5360c.dir/build.make CMakeFiles/cmTC_5360c.dir/build
+gmake[1]: Entering directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5360c.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_5360c.dir/CheckSymbolExists.c.o -c /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c: In function ‘main’:
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: error: ‘__powerpc’ undeclared (first use in this function)
+    7 |   return ((int*)(&__powerpc))[argc];
+      |                   ^~~~~~~~~
+/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:7:19: note: each undeclared identifier is reported only once for each function it appears in
+gmake[1]: *** [CMakeFiles/cmTC_5360c.dir/build.make:78: CMakeFiles/cmTC_5360c.dir/CheckSymbolExists.c.o] Error 1
+gmake[1]: Leaving directory '/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_5360c/fast] Error 2
+
+
+File /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef __powerpc
+  return ((int*)(&__powerpc))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}

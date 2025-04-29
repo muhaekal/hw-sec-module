@@ -1,0 +1,125 @@
+{
+    "version": 7,
+    "targets": [
+        {
+            "id": "oBY7ZGn8IZdOxwSRocOh",
+            "name": "Target 1",
+            "outputPath": "",
+            "eslTopFile": "uart/esl/uart_tx.h",
+            "refinementFiles": [
+                {
+                    "moduleName": "uart_tx",
+                    "refinementPath": ".vscode/uart_tx.luref",
+                    "unused": false
+                }
+            ],
+            "options": {
+                "general": {
+                    "replaceConstants": true,
+                    "synchronizationScheme": "ready/valid",
+                    "replaceFunctionCalls": true,
+                    "maximumLoopIterations": 100
+                },
+                "properties": {
+                    "useScoreboards": false,
+                    "noHandshake": false,
+                    "past": true,
+                    "statesOnly": false,
+                    "nonOverlap": false,
+                    "insertRefinement": false,
+                    "analyzeFunctions": true
+                }
+            }
+        },
+        {
+            "id": "0Dw8iBEPF3YSlog5ClLK",
+            "name": "Target 2",
+            "outputPath": "",
+            "eslTopFile": "uart/esl/uart_tx_reduced.h",
+            "refinementFiles": [
+                {
+                    "moduleName": "uart_tx_reduced",
+                    "refinementPath": ".vscode/uart_tx_reduced.luref",
+                    "unused": false
+                }
+            ],
+            "options": {
+                "general": {
+                    "replaceConstants": true,
+                    "synchronizationScheme": "ready/valid",
+                    "replaceFunctionCalls": true,
+                    "maximumLoopIterations": 100
+                },
+                "properties": {
+                    "useScoreboards": false,
+                    "noHandshake": false,
+                    "past": true,
+                    "statesOnly": false,
+                    "nonOverlap": false,
+                    "insertRefinement": false,
+                    "analyzeFunctions": true
+                }
+            }
+        },
+        {
+            "id": "n9D6tNiOerRGWdO7o8cu",
+            "name": "i2c",
+            "outputPath": "i2c",
+            "eslTopFile": "i2c/i2c_controller.h",
+            "refinementFiles": [
+                {
+                    "moduleName": "i2c_controller",
+                    "refinementPath": "i2c/i2c_controller.luref",
+                    "unused": false
+                }
+            ],
+            "options": {
+                "general": {
+                    "replaceConstants": true,
+                    "synchronizationScheme": "ready/valid",
+                    "replaceFunctionCalls": true,
+                    "maximumLoopIterations": 100
+                },
+                "properties": {
+                    "useScoreboards": false,
+                    "noHandshake": false,
+                    "past": true,
+                    "statesOnly": false,
+                    "nonOverlap": false,
+                    "insertRefinement": false,
+                    "analyzeFunctions": false
+                }
+            }
+        },
+        {
+            "id": "qjjt0ZFSKebvEMTZazzL",
+            "name": "tcp",
+            "outputPath": "tcp",
+            "eslTopFile": "tcp/tcp_server.h",
+            "refinementFiles": [
+                {
+                    "moduleName": "tcp_server",
+                    "refinementPath": ".vscode/tcp_server.luref",
+                    "unused": false
+                }
+            ],
+            "options": {
+                "general": {
+                    "replaceConstants": true,
+                    "synchronizationScheme": "ready/valid",
+                    "replaceFunctionCalls": true,
+                    "maximumLoopIterations": 100
+                },
+                "properties": {
+                    "useScoreboards": false,
+                    "noHandshake": false,
+                    "past": true,
+                    "statesOnly": false,
+                    "nonOverlap": false,
+                    "insertRefinement": false,
+                    "analyzeFunctions": false
+                }
+            }
+        }
+    ]
+}

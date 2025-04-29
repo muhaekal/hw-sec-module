@@ -1,0 +1,9 @@
+strict digraph uart_tx {  
+init->IDLE;
+IDLE->TRANSMIT_DATA;
+TRANSMIT_DATA->IDLE;
+TRANSMIT_DATA->TRANSMIT_DATA;
+init [ label ="init"];
+IDLE[ label ="IDLE"];
+TRANSMIT_DATA[ label ="TRANSMIT_DATA"];
+}

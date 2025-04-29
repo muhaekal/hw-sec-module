@@ -1,0 +1,8 @@
+# CMake generated Testfile for 
+# Source directory: /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-src/examples/sysc/simple_bus
+# Build directory: /home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-build/examples/sysc/simple_bus
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(_deps/systemc-src/examples/sysc/simple_bus/simple_bus "/usr/bin/cmake" "-DTEST_EXE=/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/bin/simple_bus" "-DTEST_DIR=/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-build/examples/sysc/simple_bus" "-DTEST_INPUT=" "-DTEST_GOLDEN=/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-src/examples/sysc/simple_bus/golden.log" "-DTEST_FILTER=" "-DDIFF_COMMAND=/usr/bin/diff" "-DDIFF_OPTIONS=-u" "-P" "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-src/cmake/run_test.cmake")
+set_tests_properties(_deps/systemc-src/examples/sysc/simple_bus/simple_bus PROPERTIES  FAIL_REGULAR_EXPRESSION "^[*][*][*]ERROR" _BACKTRACE_TRIPLES "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-src/examples/CMakeLists.txt;137;add_test;/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-src/examples/sysc/simple_bus/CMakeLists.txt;66;configure_and_add_test;/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-src/examples/sysc/simple_bus/CMakeLists.txt;0;")

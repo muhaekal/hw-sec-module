@@ -1,0 +1,230 @@
+{
+    "version": 20,
+    "module": {
+        "name": "uart_tx",
+        "reset_signal": {
+            "signal": "",
+            "is_active_low": false
+        },
+        "clock_signal": {
+            "signal": "",
+            "is_falling_edge": false
+        },
+        "next_shift_amount": 0,
+        "rtl_module_name": "",
+        "instance_name": "",
+        "wrapper_instance_name": "",
+        "default_assertion_duration": 1,
+        "default_disable_iff": "",
+        "reset": {
+            "documentation_comment": ""
+        },
+        "additional_includes": "",
+        "additional_imports": "",
+        "sync_macros": [
+            {
+                "name": "t_data_port_vld",
+                "datatype": "bool",
+                "refinement": "uart_tx.s_axis_tvalid",
+                "create_commitments": true,
+                "unused": false
+            }
+        ],
+        "notify_macros": [
+            {
+                "name": "t_data_port_rdy",
+                "datatype": "bool",
+                "refinement": "!uart_tx.busy",
+                "create_commitments": false,
+                "unused": false
+            }
+        ],
+        "input_datapath_macros": [
+            {
+                "name": "current_cnt",
+                "datatype": "unsigned_4",
+                "refinement": "uart_tx.bit_cnt",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "t_data_port",
+                "datatype": "unsigned_8",
+                "refinement": "uart_tx.s_axis_tdata",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "tready_in",
+                "datatype": "bool",
+                "refinement": "uart_tx.s_axis_tready",
+                "create_commitments": true,
+                "unused": true
+            }
+        ],
+        "output_datapath_macros": [
+            {
+                "name": "busy_port",
+                "datatype": "bool",
+                "refinement": "uart_tx.busy",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "cnt_new",
+                "datatype": "unsigned_4",
+                "refinement": "uart_tx.bit_cnt",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "tready_port",
+                "datatype": "bool",
+                "refinement": "uart_tx.s_axis_tready",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "txd_port",
+                "datatype": "unsigned_1",
+                "refinement": "uart_tx.txd",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "t_ready_port",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            }
+        ],
+        "state_macros": [
+            {
+                "name": "IDLE",
+                "datatype": "bool",
+                "refinement": "!uart_tx.busy",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "TRANSMIT_DATA",
+                "datatype": "bool",
+                "refinement": "(uart_tx.bit_cnt >=  1 && uart_tx.bit_cnt <= 9 & uart_tx.prescale_reg == 7) || (uart_tx.bit_cnt == 0 & uart_tx.busy & uart_tx.prescale_reg == 8)",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "TRANSMIT_START_BIT",
+                "datatype": "bool",
+                "refinement": "uart_tx.bit_cnt == 9",
+                "create_commitments": true,
+                "unused": true
+            },
+            {
+                "name": "TRANSMIT_STOP_BIT",
+                "datatype": "bool",
+                "refinement": "uart_tx.bit_cnt == 0 & uart_tx.busy & uart_tx.prescale_reg == 8",
+                "create_commitments": true,
+                "unused": true
+            }
+        ],
+        "register_macros": [
+            {
+                "name": "t_data",
+                "datatype": "unsigned_8",
+                "refinement": "uart_tx.data_reg[7:0]",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "cnt",
+                "datatype": "unsigned_4",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            }
+        ],
+        "assertions": [
+            {
+                "name": "IDLE_to_TRANSMIT_DATA",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "TRANSMIT_DATA_to_IDLE",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": 9,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "TRANSMIT_DATA_to_TRANSMIT_DATA",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": 8,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "IDLE_to_TRANSMIT_START_BIT",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "TRANSMIT_DATA_to_TRANSMIT_STOP_BIT",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": 8,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "TRANSMIT_START_BIT_to_IDLE",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "TRANSMIT_START_BIT_to_TRANSMIT_DATA",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": 8,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "TRANSMIT_STOP_BIT_to_IDLE",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": 9,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "TRANSMIT_DATA_to_TRANSMIT_DATA_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            }
+        ],
+        "waits": [
+            {
+                "name": "IDLE_wait",
+                "documentation_comment": "",
+                "unused": false
+            }
+        ]
+    }
+}

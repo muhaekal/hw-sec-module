@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/CMakeFiles/systemc-populate"
+		},
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/CMakeFiles/systemc-populate.rule"
+		},
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/CMakeFiles/systemc-populate-complete.rule"
+		},
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/systemc-populate-prefix/src/systemc-populate-stamp/systemc-populate-build.rule"
+		},
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/systemc-populate-prefix/src/systemc-populate-stamp/systemc-populate-configure.rule"
+		},
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/systemc-populate-prefix/src/systemc-populate-stamp/systemc-populate-download.rule"
+		},
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/systemc-populate-prefix/src/systemc-populate-stamp/systemc-populate-install.rule"
+		},
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/systemc-populate-prefix/src/systemc-populate-stamp/systemc-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/systemc-populate-prefix/src/systemc-populate-stamp/systemc-populate-patch.rule"
+		},
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/systemc-populate-prefix/src/systemc-populate-stamp/systemc-populate-test.rule"
+		},
+		{
+			"file" : "/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/_deps/systemc-subbuild/systemc-populate-prefix/src/systemc-populate-stamp/systemc-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"systemc-populate"
+		],
+		"name" : "systemc-populate"
+	}
+}

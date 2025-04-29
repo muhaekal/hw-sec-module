@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -rdynamic CMakeFiles/simple_perf.dir/simple_perf.cpp.o -o ../../../../../bin/simple_perf  -Wl,-rpath,/home/muhammad-haekal/Documents/esl_bootcamp/esl_bootcamp_up/thesis/tcp/lib ../../../../../lib/libsystemc.so.2.3.3 

@@ -1,0 +1,414 @@
+{
+    "version": 20,
+    "module": {
+        "name": "tcp",
+        "reset_signal": {
+            "signal": "",
+            "is_active_low": false
+        },
+        "clock_signal": {
+            "signal": "",
+            "is_falling_edge": false
+        },
+        "next_shift_amount": 0,
+        "rtl_module_name": "",
+        "instance_name": "",
+        "wrapper_instance_name": "",
+        "default_assertion_duration": 1,
+        "default_disable_iff": "",
+        "reset": {
+            "documentation_comment": ""
+        },
+        "additional_includes": "",
+        "additional_imports": "",
+        "sync_macros": [],
+        "notify_macros": [],
+        "input_datapath_macros": [],
+        "output_datapath_macros": [],
+        "state_macros": [
+            {
+                "name": "CLOSED_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "LISTEN_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_SENT_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "FIN_WAIT_1_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "FIN_WAIT_1_S_1",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": true
+            },
+            {
+                "name": "CLOSING_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "FIN_WAIT_2_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "LAST_ACK_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "TIME_WAIT_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "CLOSE_WAIT_S",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            }
+        ],
+        "register_macros": [
+            {
+                "name": "ev",
+                "datatype": "e_events",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
+                "name": "nxt_st",
+                "datatype": "e_states",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            }
+        ],
+        "assertions": [
+            {
+                "name": "CLOSED_S_to_LISTEN_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "CLOSED_S_to_SYN_SENT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "CLOSING_S_to_CLOSING_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "CLOSING_S_to_CLOSING_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_ESTABLISHED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "ESTABLISHED_S_to_FIN_WAIT_1_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "FIN_WAIT_1_S_1_to_FIN_WAIT_1_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "FIN_WAIT_1_S_1_to_FIN_WAIT_1_S_1_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "FIN_WAIT_1_S_to_FIN_WAIT_1_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "FIN_WAIT_1_S_to_FIN_WAIT_2_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "FIN_WAIT_2_S_to_FIN_WAIT_2_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "FIN_WAIT_2_S_to_FIN_WAIT_2_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "LAST_ACK_S_to_LAST_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LAST_ACK_S_to_LAST_ACK_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "LISTEN_S_to_CLOSED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LISTEN_S_to_LISTEN_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "LISTEN_S_to_SYN_RCVD_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_S_to_ESTABLISHED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_S_to_FIN_WAIT_1_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_S_to_SYN_RCVD_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "SYN_SENT_S_to_CLOSED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_SENT_S_to_ESTABLISHED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_SENT_S_to_SYN_SENT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "TIME_WAIT_S_to_CLOSED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "CLOSE_WAIT_S_to_CLOSE_WAIT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "CLOSE_WAIT_S_to_CLOSE_WAIT_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": true
+            },
+            {
+                "name": "CLOSE_WAIT_S_to_LAST_ACK_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "CLOSING_S_to_TIME_WAIT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ESTABLISHED_S_to_CLOSE_WAIT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "FIN_WAIT_1_S_to_CLOSING_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "FIN_WAIT_2_S_to_TIME_WAIT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LAST_ACK_S_to_CLOSED_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "LISTEN_S_to_SYN_SENT_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_RCVD_S_to_LISTEN_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "SYN_SENT_S_to_SYN_RCVD_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            }
+        ],
+        "waits": []
+    }
+}
