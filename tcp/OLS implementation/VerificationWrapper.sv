@@ -94,7 +94,7 @@ property no_window_p;
 endproperty
 no_window_a: assume property (disable iff(rst) no_window_p);
 
-property stable_close_p;
+property stable_close_p; //to have stable input during close condition
 dut_inst.fsm == 10
 |->
 $stable(rx.meta.tcp_hdr.tcp_flags.rst) &&
