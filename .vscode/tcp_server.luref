@@ -298,7 +298,7 @@
                 "name": "FIN_out",
                 "datatype": "bool",
                 "refinement": "tcp_vlg_engine.tx_eng.meta.tcp_hdr.tcp_flags.fin",
-                "create_commitments": false,
+                "create_commitments": true,
                 "unused": false
             },
             {
@@ -395,6 +395,13 @@
                 "unused": false
             },
             {
+                "name": "undriven_state",
+                "datatype": "bool",
+                "refinement": "",
+                "create_commitments": true,
+                "unused": false
+            },
+            {
                 "name": "ABSTRACT_S_1",
                 "datatype": "bool",
                 "refinement": "",
@@ -421,6 +428,13 @@
                 "name": "dcn_send_ack",
                 "datatype": "bool",
                 "refinement": "tcp_vlg_engine.fsm == dcn_send_ack_s",
+                "create_commitments": false,
+                "unused": false
+            },
+            {
+                "name": "dcn_send_fin",
+                "datatype": "bool",
+                "refinement": "tcp_vlg_engine.fsm == dcn_send_fin_s",
                 "create_commitments": false,
                 "unused": false
             },
@@ -520,6 +534,22 @@
             },
             {
                 "name": "ABSTRACT_S_to_ABSTRACT_S_1",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ABSTRACT_S_to_ABSTRACT_S_2",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "ABSTRACT_S_to_ABSTRACT_S_3",
                 "alternative_name": "",
                 "disable_iff": "",
                 "duration": -1,
@@ -672,6 +702,14 @@
             },
             {
                 "name": "SYN_RCVD_S_to_SYN_RCVD_1_S",
+                "alternative_name": "",
+                "disable_iff": "",
+                "duration": -1,
+                "documentation_comment": "",
+                "unused": false
+            },
+            {
+                "name": "undriven_state_to_undriven_state",
                 "alternative_name": "",
                 "disable_iff": "",
                 "duration": -1,
@@ -877,14 +915,6 @@
                 "duration": -1,
                 "documentation_comment": "",
                 "unused": true
-            },
-            {
-                "name": "ABSTRACT_S_to_ABSTRACT_S_2",
-                "alternative_name": "",
-                "disable_iff": "",
-                "duration": -1,
-                "documentation_comment": "",
-                "unused": false
             }
         ],
         "waits": [

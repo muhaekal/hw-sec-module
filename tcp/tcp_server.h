@@ -96,7 +96,7 @@ SC_MODULE (tcp_server){
         sc_uint<32> local_seq, local_ack, remote_ack, remote_seq, seq_number, ack_number, pkt_stop, tx_ctl_loc_seq, last_ack;
         sc_uint<16> local_port, ctl_loc_port;
         sc_uint<16> remote_port, src_port, dst_port, payload_length;
-        bool SYN, ACK, FIN, PSH, RST, listen, force_dcn, close, close_active, close_passive, close_reset, tx_done, tx_eng_acc, abstract_port_vld, dcn_send_ack;
+        bool SYN, ACK, FIN, PSH, RST, listen, force_dcn, close, close_active, close_passive, close_reset, tx_done, tx_eng_acc, abstract_port_vld, dcn_send_ack, dcn_send_fin;
         
         // Buffers for incoming and outgoing data
         //sc_uint<8> receive_buffer[536];
@@ -119,6 +119,7 @@ SC_MODULE (tcp_server){
               RST_out->set(false);
               ACK_out->set(false);
               SYN_out->set(false);
+              FIN_out->set(false);
               src_port_out->set(0);
               dst_port_out->set(0);
               ack_number_out->set(0);
@@ -156,6 +157,7 @@ SC_MODULE (tcp_server){
               SYN_out->set(true);
               ACK_out->set(true);
               RST_out->set(false);
+              FIN_out->set(false);
               ack_number_out->set(local_ack); 
               seq_number_out->set(local_seq);
 
@@ -268,15 +270,21 @@ SC_MODULE (tcp_server){
               ACK_out->set(true);
               SYN_out->set(false);
               seq_number_out->set(local_seq);
-              //ack_number_out->set(local_ack);
+              
               //added
               if (dcn_send_ack) {
-                //FIN_out->set(true);
+                FIN_out->set(false);
                 ack_number_out->set(local_ack + 1);
                 tx_eng_acc_in->get(tx_eng_acc);
                 if (tx_eng_acc) {
                   ++local_ack;
                 }
+                nxt_st = ABSTRACTED_STATE;
+              }
+              else if (dcn_send_fin) {
+                FIN_out->set(true);
+                ack_number_out->set(local_ack);
+
                 nxt_st = ABSTRACTED_STATE;
               }
               else { 
@@ -303,6 +311,7 @@ SC_MODULE (tcp_server){
               RST_out->set(true);
               ACK_out->set(true);
               SYN_out->set(false);
+              FIN_out->set(false);
               ack_number_out->set(local_ack); 
               seq_number_out->set(local_seq);
 

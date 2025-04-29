@@ -85,6 +85,7 @@ bind tcp_vlg_engine fv_tcp_server_m fv_tcp_server(
   .abstract_port_vld((tcp_vlg_engine.fsm == dcn_ack_sent_s) && tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack && (tcp_vlg_engine.rx.meta.tcp_hdr.src_port == tcp_vlg_engine.tcb.rem_port) && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.tcb.loc_port)),
   .close_reset(tcp_vlg_engine.close == close_reset),
   .dcn_send_ack(tcp_vlg_engine.fsm == dcn_send_ack_s),
+  .dcn_send_fin(tcp_vlg_engine.fsm == dcn_send_fin_s),
   .local_ack(tcp_vlg_engine.tcb.loc_ack),
   .local_port(tcp_vlg_engine.tcb.loc_port),
   .local_seq(tcp_vlg_engine.tcb.loc_seq),
@@ -99,5 +100,6 @@ bind tcp_vlg_engine fv_tcp_server_m fv_tcp_server(
   .LISTEN_S(tcp_vlg_engine.fsm == listen_s),
   .RST_RCVD_S(tcp_vlg_engine.fsm == dcn_send_rst_s),
   .SYN_RCVD_1_S(tcp_vlg_engine.fsm == con_syn_ack_sent_s),
-  .SYN_RCVD_S(tcp_vlg_engine.fsm == con_send_syn_ack_s)
+  .SYN_RCVD_S(tcp_vlg_engine.fsm == con_send_syn_ack_s),
+  .undriven_state()
 );
