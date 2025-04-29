@@ -25,7 +25,7 @@
             {
                 "name": "ACK_port_2_vld",
                 "datatype": "bool",
-                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack && (tcp_vlg_engine.rx.meta.tcp_hdr.tcp_seq_num == tcp_vlg_engine.tcb.rem_seq + 1) && (tcp_vlg_engine.rx.meta.tcp_hdr.src_port == tcp_vlg_engine.tcb.rem_port) && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.tcb.loc_port)",
+                "refinement": "tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack && (tcp_vlg_engine.rx.meta.tcp_hdr.tcp_seq_num == tcp_vlg_engine.tcb.loc_ack) && (tcp_vlg_engine.rx.meta.tcp_hdr.src_port == tcp_vlg_engine.tcb.rem_port) && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.tcb.loc_port)",
                 "create_commitments": true,
                 "unused": false
             },

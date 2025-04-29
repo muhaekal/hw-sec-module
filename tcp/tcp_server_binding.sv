@@ -19,7 +19,7 @@ bind tcp_vlg_engine fv_tcp_server_m fv_tcp_server(
   .ACK_port_rdy(1'b1),
   .ACK_port(tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack),
 
-  .ACK_port_2_vld(tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack && (tcp_vlg_engine.rx.meta.tcp_hdr.tcp_seq_num == tcp_vlg_engine.tcb.rem_seq + 1) && (tcp_vlg_engine.rx.meta.tcp_hdr.src_port == tcp_vlg_engine.tcb.rem_port) && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.tcb.loc_port)),
+  .ACK_port_2_vld(tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack && (tcp_vlg_engine.rx.meta.tcp_hdr.tcp_seq_num == tcp_vlg_engine.tcb.loc_ack) && (tcp_vlg_engine.rx.meta.tcp_hdr.src_port == tcp_vlg_engine.tcb.rem_port) && (tcp_vlg_engine.rx.meta.tcp_hdr.dst_port == tcp_vlg_engine.tcb.loc_port)),
   .ACK_port_2_rdy(1'b1),
   .ACK_port_2(tcp_vlg_engine.rx.meta.tcp_hdr.tcp_flags.ack),
 
