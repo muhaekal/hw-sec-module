@@ -60,7 +60,7 @@ module i2c_top #(
         .clk         (clk),
         .addr        (addr_target),
         .data_rcv    (data_received_controller),
-        .data_rcv_in (),
+        .data_rcv_in (data_received_controller),
         .data_snt    (data_send),
         .scl         (scl_controller),
         .sda_in      (SDA_rx),

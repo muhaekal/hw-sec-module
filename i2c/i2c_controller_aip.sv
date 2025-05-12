@@ -71,15 +71,15 @@ reset_a: assert property (reset_p);
 property reset_p;
   reset_sequence |->
   IDLE_S &&
-  ack == 1'd0 &&
-  addr_shift_reg == 8'd0 &&
+  //ack == 1'd0 && //not specified during reset condition in the design.
+  //addr_shift_reg == 8'd0 &&
   bit_count_addr == 4'd0 &&
   bit_count_data == 4'd0 &&
   count_thd == 10'd0 &&
   count_thigh == 10'd0 &&
   count_tlow == 10'd0 &&
   data_rcv == 24'd0 &&
-  data_shift_reg == 24'd0 &&
+  //data_shift_reg == 24'd0 &&
   rcvd_byte == 2'd0 &&
   rw == 1'd0 &&
   scl == 1'd1 &&
