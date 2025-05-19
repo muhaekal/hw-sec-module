@@ -22,6 +22,10 @@ localparam HALT=12;                                 //HALT state
 parameter THD_STA=4;                              //Hold time (repeated) START condition. 4.5usec at 50MHZ clock (from spec: minimum of 4us)
 parameter TLOW=5;                                 //Low period of the SCL clock. 5usec at 50MHz clock (from spec: minimum of 4.7us)
 parameter THIGH=4;                                //High period of the SCL clock. 4.5usec at 50MHZ clock (from spec: minimum of 4us)
+
+//introducing design error 1: Thigh parameter changes from 4 to 3
+//parameter THIGH=3;                                //High period of the SCL clock. 4.5usec at 50MHZ clock (from spec: minimum of 4us)
+
 parameter TSU_DAT=2;                              //Data setup time. 2us at 50MHz clock (from spec: minimum of 250ns)
 parameter TSU_STO=4;                              //Set-up time for STOP condition 4.5us at 50MHz (from spec: minimum of 4us)
 parameter THIGH_SAMPLE=1;                          //Sampling instance of the SDA line after positive edge of SCL. 1us at 50MHz clock
@@ -253,6 +257,10 @@ always @(posedge clk or negedge rst)
   else if (state==BIT_CYCLE_HIGH_ADDR) begin
     count_high<=count_high+$bits(count_high)'(1);
     SCL_tx<=1'b1;
+
+    //introducing design error 2: Wrong assignment of SCL during BIT_CYCLE_HIGH_ADDR state
+    //SCL_tx<=1'b0;
+
     count_low<='0;                  //Reset LOW period counter
   end
 

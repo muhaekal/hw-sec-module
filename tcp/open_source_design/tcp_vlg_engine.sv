@@ -275,6 +275,10 @@ module tcp_vlg_engine
             //tcb.loc_seq   <= seq_num_prng;
             tcb.loc_seq   <= 'h7d0; // initial sequence number can be any random number
             tcb.loc_ack   <= rx.meta.tcp_hdr.tcp_seq_num + 1; // set local ack as remote seq + 1
+
+            //Introducing design error 2: incorrect update of loc_ack
+            //tcb.loc_ack   <= rx.meta.tcp_hdr.tcp_seq_num + 2; // set local ack as remote seq + 1
+
             tcb.rem_seq   <= rx.meta.tcp_hdr.tcp_seq_num;
             tcb.rem_ack   <= rx.meta.tcp_hdr.tcp_ack_num;
             scl_raw       <= (rx.meta.tcp_opt.tcp_opt_pres.wnd_pres) ? rx.meta.tcp_opt.tcp_opt_wnd.wnd : 1; // raw scaling option
@@ -291,6 +295,10 @@ module tcp_vlg_engine
           tx_eng.meta.tcp_hdr.src_port     <= tcb.loc_port;
           tx_eng.meta.tcp_hdr.dst_port     <= tcb.rem_port;
           tx_eng.meta.tcp_hdr.tcp_flags    <= TCP_FLAG_SYN ^ TCP_FLAG_ACK;
+
+          //Introducing design error 1: not sending an ACK flag
+          //tx_eng.meta.tcp_hdr.tcp_flags    <= TCP_FLAG_SYN;
+
           tx_eng.meta.tcp_hdr.tcp_wnd_size <= DEFAULT_WINDOW_SIZE;
           tx_eng.meta.tcp_hdr.tcp_cks      <= 0;
           tx_eng.meta.tcp_hdr.tcp_pointer  <= 0;
